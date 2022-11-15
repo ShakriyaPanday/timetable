@@ -39,8 +39,11 @@ class HomePage extends StatelessWidget {
                     Text(datetime1.difference(datetime2).inMinutes.toString()),
               ),
               Container(
-                child:
-                    Text(datetime1.difference(datetime2).inMinutes.toString()),
+                child: Text(datetime1
+                    .difference(DateTime(
+                        datetime1.year, datetime1.month, datetime1.day, 22, 56))
+                    .inMinutes
+                    .toString()),
               ),
             ]),
       ),
