@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
             backgroundColor: Colors.deepPurple[100],
             elevation: 0,
             centerTitle: true,
+            toolbarHeight: 70,
           )),
       home: HomePage(),
     );
