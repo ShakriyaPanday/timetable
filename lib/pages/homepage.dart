@@ -5,6 +5,9 @@ import 'package:intl/intl.dart';
 class HomePage extends StatelessWidget {
   DateTime datetime1 = DateTime.now();
   DateTime datetime2 = DateTime(2022, 11, 15, 22, 56);
+
+  DateTime now = DateTime.now();
+
   Duration diff = Duration();
 
   @override
@@ -30,6 +33,10 @@ class HomePage extends StatelessWidget {
               ),
               Container(
                 child: Text(datetime2.toString()),
+              ),
+              Container(
+                child:
+                    Text(datetime1.difference(datetime2).inMinutes.toString()),
               ),
               Container(
                 child:
