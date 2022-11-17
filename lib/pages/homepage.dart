@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
 import 'package:timetable/utlis/currenttime.dart';
 
 class HomePage extends StatelessWidget {
-  DateTime datetime1 = DateTime.now();
-  DateTime datetime2 = DateTime(2022, 11, 15, 22, 56);
-
-  DateTime now = DateTime.now();
-
-  Duration diff = Duration();
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +18,6 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
-        body: CurrentTime());
+        body: const CurrentTime());
   }
 }

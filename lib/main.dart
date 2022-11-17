@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
             centerTitle: true,
             toolbarHeight: 70,
           )),
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }

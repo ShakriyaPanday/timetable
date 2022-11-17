@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 class CurrentTime extends StatefulWidget {
   const CurrentTime({super.key});
@@ -9,6 +10,7 @@ class CurrentTime extends StatefulWidget {
 }
 
 class _CurrentTimeState extends State<CurrentTime> {
+  String time = DateFormat.jm().format(DateTime.now()).toString();
   int currentHour = (DateTime.now().hour % 12);
   int currentMinute = DateTime.now().minute;
   String timeRemain = "30";
@@ -23,34 +25,19 @@ class _CurrentTimeState extends State<CurrentTime> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Container(
-              child: Text(
-                currentHour.toString() + " : " + currentMinute.toString(),
-                style: GoogleFonts.ubuntu(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 50,
-                  color: Colors.black,
-                ),
+            Text(
+              time,
+              style: GoogleFonts.ubuntu(
+                fontWeight: FontWeight.bold,
+                fontSize: 70,
+                color: Colors.black,
               ),
             ),
-            SizedBox(
-              height: 20,
-            ),
-            Container(
-              child: Text(
-                "Time Remaining",
-                style: GoogleFonts.ubuntu(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 45,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 40,
+            const SizedBox(
+              height: 70,
             ),
             Container(
               width: 600,
@@ -69,30 +56,30 @@ class _CurrentTimeState extends State<CurrentTime> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 60,
+            const SizedBox(
+              height: 70,
             ),
-            Container(
-                child: Text(
+            Text(
               currentSection,
               style: GoogleFonts.ubuntu(
                 fontSize: 50,
                 color: Colors.black,
               ),
-            )),
-            SizedBox(
+            ),
+            const SizedBox(
               height: 55,
             ),
             GestureDetector(
               onTap: () {
                 setState(() {
+                  time = DateFormat.jm().format(DateTime.now()).toString();
                   currentHour = (DateTime.now().hour % 12);
                   currentMinute = DateTime.now().minute;
                   timeRemain = timeRemains(currentHour, currentMinute);
                   currentSection = sectionFind(currentHour, currentMinute);
                 });
               },
-              child: Container(
+              child: SizedBox(
                 width: double.infinity,
                 child: Center(
                   child: Text(
