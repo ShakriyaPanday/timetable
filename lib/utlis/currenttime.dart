@@ -13,7 +13,7 @@ class CurrentTime extends StatefulWidget {
 class _CurrentTimeState extends State<CurrentTime> {
   int currentHour = (DateTime.now().hour % 12);
   int currentMinute = DateTime.now().minute;
-  String timeRemain = "35";
+  String timeRemain = "30";
   String currentSection = "No Period";
 
   @override
@@ -22,13 +22,13 @@ class _CurrentTimeState extends State<CurrentTime> {
       padding: const EdgeInsets.all(10.0),
       child: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
               child: Text(
                 currentHour.toString() + " : " + currentMinute.toString(),
-                style: GoogleFonts.poppins(
+                style: GoogleFonts.ubuntu(
                   fontWeight: FontWeight.bold,
                   fontSize: 50,
                   color: Colors.black,
@@ -37,8 +37,18 @@ class _CurrentTimeState extends State<CurrentTime> {
             ),
             Container(
               child: Text(
+                "Time Remaining",
+                style: GoogleFonts.ubuntu(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 45,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+            Container(
+              child: Text(
                 timeRemain,
-                style: GoogleFonts.dancingScript(
+                style: GoogleFonts.ubuntu(
                   fontWeight: FontWeight.bold,
                   fontSize: 300,
                   color: Colors.black,
@@ -53,11 +63,15 @@ class _CurrentTimeState extends State<CurrentTime> {
                 color: Colors.black,
               ),
             )),
+            SizedBox(
+              height: 90,
+            ),
             GestureDetector(
               onTap: () {
                 setState(() {
                   currentHour = (DateTime.now().hour % 12);
                   currentMinute = DateTime.now().minute;
+                  timeRemain = timeRemains(currentHour, currentMinute);
                   currentSection = sectionFind(currentHour, currentMinute);
                 });
               },
@@ -79,22 +93,137 @@ class _CurrentTimeState extends State<CurrentTime> {
   }
 }
 
-String sectionFind(int currentHour, int currentMinute) {
+String timeRemains(int currentHour, int currentMinute) {
   //First Period
-  if (currentHour == 10 && currentMinute > 44 && currentMinute <= 46) {
-    return "Section : 7 \"D\"";
+  if (currentHour == 11 && currentMinute > 22 && currentMinute <= 28) {
+    return (DateTime(DateTime.now().year, DateTime.now().month,
+                DateTime.now().day, 11, 45)
+            .difference(DateTime(DateTime.now().year, DateTime.now().month,
+                DateTime.now().day, currentHour, currentMinute)))
+        .inMinutes
+        .toString();
+  }
+  //Break
+  else if (currentHour == 12 && currentMinute > 22 && currentMinute <= 30) {
+    return (DateTime(DateTime.now().year, DateTime.now().month,
+                DateTime.now().day, 11, 45)
+            .difference(DateTime(DateTime.now().year, DateTime.now().month,
+                DateTime.now().day, currentHour, currentMinute)))
+        .inMinutes
+        .toString();
+  }
+  //Second Period
+  else if (currentHour == 10 && currentMinute > 29 && currentMinute <= 32) {
+    return (DateTime(DateTime.now().year, DateTime.now().month,
+                DateTime.now().day, 11, 45)
+            .difference(DateTime(DateTime.now().year, DateTime.now().month,
+                DateTime.now().day, currentHour, currentMinute)))
+        .inMinutes
+        .toString();
+  }
+  // Third Period
+  else if (currentHour == 10 && currentMinute > 29 && currentMinute <= 32) {
+    return (DateTime(DateTime.now().year, DateTime.now().month,
+                DateTime.now().day, 11, 45)
+            .difference(DateTime(DateTime.now().year, DateTime.now().month,
+                DateTime.now().day, currentHour, currentMinute)))
+        .inMinutes
+        .toString();
+  }
+  // Lunch
+  else if (currentHour == 10 && currentMinute > 29 && currentMinute <= 32) {
+    return (DateTime(DateTime.now().year, DateTime.now().month,
+                DateTime.now().day, 11, 45)
+            .difference(DateTime(DateTime.now().year, DateTime.now().month,
+                DateTime.now().day, currentHour, currentMinute)))
+        .inMinutes
+        .toString();
+  }
+  // Fourth Period
+  else if (currentHour == 10 && currentMinute > 29 && currentMinute <= 32) {
+    return (DateTime(DateTime.now().year, DateTime.now().month,
+                DateTime.now().day, 11, 45)
+            .difference(DateTime(DateTime.now().year, DateTime.now().month,
+                DateTime.now().day, currentHour, currentMinute)))
+        .inMinutes
+        .toString();
+  }
+  // Fifth Period
+  else if (currentHour == 10 && currentMinute > 29 && currentMinute <= 32) {
+    return (DateTime(DateTime.now().year, DateTime.now().month,
+                DateTime.now().day, 11, 45)
+            .difference(DateTime(DateTime.now().year, DateTime.now().month,
+                DateTime.now().day, currentHour, currentMinute)))
+        .inMinutes
+        .toString();
   }
   //Break
   else if (currentHour == 10 && currentMinute > 29 && currentMinute <= 32) {
+    return (DateTime(DateTime.now().year, DateTime.now().month,
+                DateTime.now().day, 11, 45)
+            .difference(DateTime(DateTime.now().year, DateTime.now().month,
+                DateTime.now().day, currentHour, currentMinute)))
+        .inMinutes
+        .toString();
+  }
+  // Sixth Period
+  else if (currentHour == 10 && currentMinute > 29 && currentMinute <= 32) {
+    return (DateTime(DateTime.now().year, DateTime.now().month,
+                DateTime.now().day, 11, 45)
+            .difference(DateTime(DateTime.now().year, DateTime.now().month,
+                DateTime.now().day, currentHour, currentMinute)))
+        .inMinutes
+        .toString();
+  }
+  // Seventh Period
+  else if (currentHour == 10 && currentMinute > 29 && currentMinute <= 32) {
+    return (DateTime(DateTime.now().year, DateTime.now().month,
+                DateTime.now().day, 11, 45)
+            .difference(DateTime(DateTime.now().year, DateTime.now().month,
+                DateTime.now().day, currentHour, currentMinute)))
+        .inMinutes
+        .toString();
+  }
+  // Snack
+  else if (currentHour == 10 && currentMinute > 29 && currentMinute <= 32) {
+    return (DateTime(DateTime.now().year, DateTime.now().month,
+                DateTime.now().day, 11, 45)
+            .difference(DateTime(DateTime.now().year, DateTime.now().month,
+                DateTime.now().day, currentHour, currentMinute)))
+        .inMinutes
+        .toString();
+  }
+  // Eigth Period
+  else if (currentHour == 10 && currentMinute > 29 && currentMinute <= 32) {
+    return (DateTime(DateTime.now().year, DateTime.now().month,
+                DateTime.now().day, 11, 45)
+            .difference(DateTime(DateTime.now().year, DateTime.now().month,
+                DateTime.now().day, currentHour, currentMinute)))
+        .inMinutes
+        .toString();
+  }
+  // No Period
+  else {
+    return "0";
+  }
+}
+
+String sectionFind(int currentHour, int currentMinute) {
+  //First Period
+  if (currentHour == 11 && currentMinute > 22 && currentMinute <= 28) {
+    return "7 \"D\"";
+  }
+  //Break
+  else if (currentHour == 12 && currentMinute > 22 && currentMinute <= 30) {
     return "Break";
   }
   //Second Period
   else if (currentHour == 10 && currentMinute > 29 && currentMinute <= 32) {
-    return "Section : 7 \"D\"";
+    return "7 \"D\"";
   }
   // Third Period
   else if (currentHour == 10 && currentMinute > 29 && currentMinute <= 32) {
-    return "Section : 7 \"B\"";
+    return "7 \"B\"";
   }
   // Lunch
   else if (currentHour == 10 && currentMinute > 29 && currentMinute <= 32) {
@@ -102,11 +231,11 @@ String sectionFind(int currentHour, int currentMinute) {
   }
   // Fourth Period
   else if (currentHour == 10 && currentMinute > 29 && currentMinute <= 32) {
-    return "Section : 7 \"B\"";
+    return "7 \"B\"";
   }
   // Fifth Period
   else if (currentHour == 10 && currentMinute > 29 && currentMinute <= 32) {
-    return "Section : 7 \"C\"";
+    return "7 \"C\"";
   }
   //Break
   else if (currentHour == 10 && currentMinute > 29 && currentMinute <= 32) {
@@ -114,11 +243,11 @@ String sectionFind(int currentHour, int currentMinute) {
   }
   // Sixth Period
   else if (currentHour == 10 && currentMinute > 29 && currentMinute <= 32) {
-    return "Section : 7 \"C\"";
+    return "7 \"C\"";
   }
   // Seventh Period
   else if (currentHour == 10 && currentMinute > 29 && currentMinute <= 32) {
-    return "Section : 7 \"A\"";
+    return "7 \"A\"";
   }
   // Snack
   else if (currentHour == 10 && currentMinute > 29 && currentMinute <= 32) {
@@ -126,10 +255,10 @@ String sectionFind(int currentHour, int currentMinute) {
   }
   // Eigth Period
   else if (currentHour == 10 && currentMinute > 29 && currentMinute <= 32) {
-    return "Section : 7 \"A\"";
+    return "7 \"A\"";
   }
   // No Period
   else {
-    return "Lunch Break";
+    return "No Period";
   }
 }
