@@ -11,7 +11,7 @@ class CurrentTime extends StatefulWidget {
 
 class _CurrentTimeState extends State<CurrentTime> {
   String time = DateFormat.jm().format(DateTime.now()).toString();
-  int currentHour = (DateTime.now().hour % 12);
+  int currentHour = (DateTime.now().hour);
   int currentMinute = DateTime.now().minute;
   String timeRemain = "30";
   String currentSection = "No Period";
@@ -26,18 +26,18 @@ class _CurrentTimeState extends State<CurrentTime> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(
-              height: 20,
+              height: 10,
             ),
             Text(
               time,
-              style: GoogleFonts.ubuntu(
+              style: GoogleFonts.oswald(
                 fontWeight: FontWeight.bold,
                 fontSize: 70,
                 color: Colors.black,
               ),
             ),
             const SizedBox(
-              height: 70,
+              height: 60,
             ),
             Container(
               width: 600,
@@ -57,23 +57,25 @@ class _CurrentTimeState extends State<CurrentTime> {
               ),
             ),
             const SizedBox(
-              height: 70,
+              height: 60,
             ),
             Text(
               currentSection,
-              style: GoogleFonts.ubuntu(
+              style: GoogleFonts.oswald(
                 fontSize: 50,
                 color: Colors.black,
+                fontWeight: FontWeight.bold,
+                wordSpacing: 5,
               ),
             ),
             const SizedBox(
-              height: 55,
+              height: 50,
             ),
             GestureDetector(
               onTap: () {
                 setState(() {
                   time = DateFormat.jm().format(DateTime.now()).toString();
-                  currentHour = (DateTime.now().hour % 12);
+                  currentHour = (DateTime.now().hour);
                   currentMinute = DateTime.now().minute;
                   timeRemain = timeRemains(currentHour, currentMinute);
                   currentSection = sectionFind(currentHour, currentMinute);
@@ -101,6 +103,7 @@ class _CurrentTimeState extends State<CurrentTime> {
 }
 
 String timeRemains(int currentHour, int currentMinute) {
+  print(currentHour);
   //First Period
   if ((currentHour == 11 && currentMinute > 40) &&
       (currentHour == 11 && currentMinute > 40)) {
@@ -231,7 +234,7 @@ String sectionFind(int currentHour, int currentMinute) {
   //First Period
   if ((currentHour == 11 && currentMinute > 40) &&
       (currentHour == 11 && currentMinute > 40)) {
-    return "7 \"D\"";
+    return "7 \" D \"";
   }
   //Break
   else if ((currentHour == 11 && currentMinute > 40) &&
@@ -239,29 +242,29 @@ String sectionFind(int currentHour, int currentMinute) {
     return "Break";
   }
   //Second Period
-  else if ((currentHour == 11 && currentMinute > 40) &&
-      (currentHour == 11 && currentMinute > 40)) {
-    return "7 \"D\"";
+  else if ((currentHour == 0 && currentMinute > 20) &&
+      (currentHour == 0 && currentMinute < 40)) {
+    return "7 \" D \"";
   }
   // Third Period
   else if ((currentHour == 11 && currentMinute > 40) &&
       (currentHour == 11 && currentMinute > 40)) {
-    return "7 \"B\"";
+    return "7 \" B \"";
   }
   // Lunch
-  else if ((currentHour == 11 && currentMinute > 40) &&
-      (currentHour == 11 && currentMinute > 40)) {
+  else if ((currentHour == 12 && currentMinute > 20) &&
+      (currentHour == 12 && currentMinute < 40)) {
     return "Lunch Break";
   }
   // Fourth Period
   else if ((currentHour == 11 && currentMinute > 40) &&
       (currentHour == 11 && currentMinute > 40)) {
-    return "7 \"B\"";
+    return "7 \" B \"";
   }
   // Fifth Period
   else if ((currentHour == 11 && currentMinute > 40) &&
       (currentHour == 11 && currentMinute > 40)) {
-    return "7 \"C\"";
+    return "7 \" C \"";
   }
   //Break
   else if ((currentHour == 11 && currentMinute > 40) &&
@@ -271,22 +274,22 @@ String sectionFind(int currentHour, int currentMinute) {
   // Sixth Period
   else if ((currentHour == 11 && currentMinute > 40) &&
       (currentHour == 11 && currentMinute > 40)) {
-    return "7 \"C\"";
+    return "7 \" C \"";
   }
   // Seventh Period
   else if ((currentHour == 11 && currentMinute > 40) &&
       (currentHour == 11 && currentMinute > 40)) {
-    return "7 \"A\"";
+    return "7 \" A \"";
   }
   // Snack
-  else if ((currentHour == 11 && currentMinute > 40) &&
-      (currentHour == 11 && currentMinute > 40)) {
+  else if ((currentHour == 0 && currentMinute > 30) &&
+      (currentHour == 0 && currentMinute < 40)) {
     return "Snack Break";
   }
   // Eigth Period
   else if ((currentHour == 11 && currentMinute > 40) &&
       (currentHour == 11 && currentMinute > 40)) {
-    return "7 \"A\"";
+    return "7 \" A \"";
   }
   // No Period
   else {
