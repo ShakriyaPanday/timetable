@@ -8,29 +8,42 @@ class CurrentTime extends StatefulWidget {
 }
 
 class _CurrentTimeState extends State<CurrentTime> {
-  String currentTime = (DateTime.now().hour % 12).toString() +
-      " : " +
-      DateTime.now().minute.toString();
+  int currentHour = (DateTime.now().hour % 12);
+  int currentMinute = DateTime.now().minute;
+  String timeRemain = "No Class";
+  String currentSection = "";
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          child: Text(currentTime),
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              child: Text(
+                  currentHour.toString() + " : " + currentMinute.toString()),
+            ),
+            Container(
+              child: Text(timeRemain),
+            ),
+            Container(
+              child: Text(currentSection),
+            ),
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  currentHour = (DateTime.now().hour % 12);
+                  currentMinute = DateTime.now().minute;
+                });
+              },
+              child: Container(
+                child: Text("Designed by Shakriya Panday"),
+              ),
+            ),
+          ],
         ),
-        GestureDetector(
-          onTap: () {
-            setState(() {
-              currentTime = (DateTime.now().hour % 12).toString() +
-                  " : " +
-                  DateTime.now().minute.toString();
-            });
-          },
-          child: Container(
-            child: Text("Designed by Shakriya Panday"),
-          ),
-        ),
-      ],
+      ),
     );
   }
 }
