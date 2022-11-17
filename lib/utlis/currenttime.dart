@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class CurrentTime extends StatefulWidget {
@@ -35,6 +37,7 @@ class _CurrentTimeState extends State<CurrentTime> {
                 setState(() {
                   currentHour = (DateTime.now().hour % 12);
                   currentMinute = DateTime.now().minute;
+                  timeRemain = calculateTime(currentHour, currentMinute);
                 });
               },
               child: Container(
@@ -45,5 +48,13 @@ class _CurrentTimeState extends State<CurrentTime> {
         ),
       ),
     );
+  }
+}
+
+String calculateTime(int currentHour, int currentMinute) {
+  if (currentHour == 9 && currentMinute >= 52) {
+    return "Class1";
+  } else {
+    return "No Class";
   }
 }
