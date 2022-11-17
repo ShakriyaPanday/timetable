@@ -13,7 +13,8 @@ class _CurrentTimeState extends State<CurrentTime> {
   int currentHour = (DateTime.now().hour % 12);
   int currentMinute = DateTime.now().minute;
   String timeRemain = "No Class";
-  String currentSection = "";
+  String currentSection = "7 D";
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -25,12 +26,6 @@ class _CurrentTimeState extends State<CurrentTime> {
             Container(
               child: Text(
                   currentHour.toString() + " : " + currentMinute.toString()),
-            ),
-            Container(
-              child: Text(timeRemain),
-            ),
-            Container(
-              child: Text(currentSection),
             ),
             GestureDetector(
               onTap: () {
@@ -52,9 +47,56 @@ class _CurrentTimeState extends State<CurrentTime> {
 }
 
 String calculateTime(int currentHour, int currentMinute) {
-  if (currentHour == 9 && currentMinute >= 52) {
-    return "Class1";
-  } else {
+  //First Period
+  if (currentHour == 10 && currentMinute >= 26 && currentMinute <= 28) {
+    return "Class 1";
+  }
+  //Break
+  else if (currentHour == 10 && currentMinute >= 29 && currentMinute <= 32) {
+    return "Class 2";
+  }
+  //Second Period
+  else if (currentHour == 10 && currentMinute >= 29 && currentMinute <= 32) {
+    return "Class 2";
+  }
+  // Third Period
+  else if (currentHour == 10 && currentMinute >= 29 && currentMinute <= 32) {
+    return "Class 2";
+  }
+  // Lunch
+  else if (currentHour == 10 && currentMinute >= 29 && currentMinute <= 32) {
+    return "Class 2";
+  }
+  // Fourth Period
+  else if (currentHour == 10 && currentMinute >= 29 && currentMinute <= 32) {
+    return "Class 2";
+  }
+  // Fifth Period
+  else if (currentHour == 10 && currentMinute >= 29 && currentMinute <= 32) {
+    return "Class 2";
+  }
+  //Break
+  else if (currentHour == 10 && currentMinute >= 29 && currentMinute <= 32) {
+    return "Class 2";
+  }
+  // Sixth Period
+  else if (currentHour == 10 && currentMinute >= 29 && currentMinute <= 32) {
+    return "Class 2";
+  }
+  // Seventh Period
+  else if (currentHour == 10 && currentMinute >= 29 && currentMinute <= 32) {
+    return "Class 2";
+  }
+  // Snack
+  else if (currentHour == 10 && currentMinute >= 29 && currentMinute <= 32) {
+    return "Class 2";
+  }
+  // Eigth Period
+  else if (currentHour == 10 && currentMinute >= 29 && currentMinute <= 32) {
+    return "Class 2";
+  }
+  // No Period
+  else {
     return "No Class";
   }
 }
