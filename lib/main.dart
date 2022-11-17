@@ -14,9 +14,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Bell",
       theme: ThemeData(
-          scaffoldBackgroundColor: Colors.deepPurple[50],
+          scaffoldBackgroundColor: Colors.deepOrange[50],
           appBarTheme: AppBarTheme(
-            backgroundColor: Colors.deepPurple[100],
+            backgroundColor: Colors.deepOrange[300],
+            foregroundColor: Colors.white,
             elevation: 0,
             centerTitle: true,
             toolbarHeight: 70,

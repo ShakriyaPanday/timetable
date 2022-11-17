@@ -22,9 +22,12 @@ class _CurrentTimeState extends State<CurrentTime> {
       padding: const EdgeInsets.all(10.0),
       child: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            SizedBox(
+              height: 20,
+            ),
             Container(
               child: Text(
                 currentHour.toString() + " : " + currentMinute.toString(),
@@ -34,6 +37,9 @@ class _CurrentTimeState extends State<CurrentTime> {
                   color: Colors.black,
                 ),
               ),
+            ),
+            SizedBox(
+              height: 20,
             ),
             Container(
               child: Text(
@@ -45,15 +51,28 @@ class _CurrentTimeState extends State<CurrentTime> {
                 ),
               ),
             ),
+            SizedBox(
+              height: 40,
+            ),
             Container(
-              child: Text(
-                timeRemain,
-                style: GoogleFonts.ubuntu(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 300,
-                  color: Colors.black,
+              width: 600,
+              decoration: BoxDecoration(
+                color: Colors.deepOrange[300],
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Center(
+                child: Text(
+                  timeRemain,
+                  style: GoogleFonts.ubuntu(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 300,
+                    color: Colors.white,
+                  ),
                 ),
               ),
+            ),
+            SizedBox(
+              height: 60,
             ),
             Container(
                 child: Text(
@@ -64,7 +83,7 @@ class _CurrentTimeState extends State<CurrentTime> {
               ),
             )),
             SizedBox(
-              height: 90,
+              height: 55,
             ),
             GestureDetector(
               onTap: () {
@@ -76,12 +95,15 @@ class _CurrentTimeState extends State<CurrentTime> {
                 });
               },
               child: Container(
-                child: Text(
-                  "Designed by Shakriya Panday",
-                  style: GoogleFonts.oswald(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                    color: Colors.black,
+                width: double.infinity,
+                child: Center(
+                  child: Text(
+                    "Designed by Shakriya Panday",
+                    style: GoogleFonts.oswald(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                      color: Colors.black,
+                    ),
                   ),
                 ),
               ),
@@ -95,9 +117,9 @@ class _CurrentTimeState extends State<CurrentTime> {
 
 String timeRemains(int currentHour, int currentMinute) {
   //First Period
-  if (currentHour == 11 && currentMinute > 22 && currentMinute <= 28) {
+  if (currentHour == 11 && currentMinute > 40 && currentMinute <= 50) {
     return (DateTime(DateTime.now().year, DateTime.now().month,
-                DateTime.now().day, 11, 45)
+                DateTime.now().day, 11, 50)
             .difference(DateTime(DateTime.now().year, DateTime.now().month,
                 DateTime.now().day, currentHour, currentMinute)))
         .inMinutes

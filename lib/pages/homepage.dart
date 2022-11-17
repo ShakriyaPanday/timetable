@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
             style: GoogleFonts.poppins(
               fontWeight: FontWeight.bold,
               fontSize: 25,
-              color: Colors.black,
+              // color: Colors.white,
             ),
           ),
         ),
