@@ -41,7 +41,7 @@ class _PeriodState extends State<Period> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(
-              height: 10,
+              height: 1,
             ),
             Text(
               time,
@@ -52,32 +52,53 @@ class _PeriodState extends State<Period> {
               ),
             ),
             const SizedBox(
-              height: 60,
+              height: 30,
             ),
             Container(
-              width: 600,
-              decoration: BoxDecoration(
-                color: Colors.deepOrange[300],
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Center(
-                child: Text(
-                  timeRemain,
-                  style: GoogleFonts.ubuntu(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 300,
-                    color: Colors.white,
-                  ),
+                width: 600,
+                padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                decoration: BoxDecoration(
+                  color: Colors.deepOrange[300],
+                  borderRadius: BorderRadius.circular(20),
                 ),
-              ),
-            ),
+                child: timeRemain == 'No'
+                    ? Center(
+                        child: Text(
+                          "\n\nClass Over\n\n",
+                          style: GoogleFonts.ubuntu(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 60,
+                            color: Colors.white,
+                          ),
+                        ),
+                      )
+                    : Column(
+                        children: [
+                          Text(
+                            "Time Remaining",
+                            style: GoogleFonts.ubuntu(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 40,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Text(
+                            timeRemain,
+                            style: GoogleFonts.ubuntu(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 300,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      )),
             const SizedBox(
-              height: 60,
+              height: 40,
             ),
             Text(
               currentSection,
               style: GoogleFonts.oswald(
-                fontSize: 50,
+                fontSize: 48,
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
                 wordSpacing: 5,
@@ -149,10 +170,10 @@ class NoClass extends StatelessWidget {
 String timeRemains(int currentHour, int currentMinute) {
   //First Period
 
-  if (((currentHour > 9) || (currentHour == 9 && currentMinute > 10)) &&
+  if (((currentHour > 9) || (currentHour == 9 && currentMinute >= 10)) &&
       ((currentHour < 9) || (currentHour == 9 && currentMinute <= 45))) {
     return (DateTime(DateTime.now().year, DateTime.now().month,
-                DateTime.now().day, 10, 35)
+                DateTime.now().day, 9, 45)
             .difference(DateTime(DateTime.now().year, DateTime.now().month,
                 DateTime.now().day, currentHour, currentMinute)))
         .inMinutes
@@ -203,7 +224,7 @@ String timeRemains(int currentHour, int currentMinute) {
   else if (((currentHour > 11) || (currentHour == 11 && currentMinute > 40)) &&
       ((currentHour < 11) || (currentHour == 11 && currentMinute <= 45))) {
     return (DateTime(DateTime.now().year, DateTime.now().month,
-                DateTime.now().day, 12, 20)
+                DateTime.now().day, 11, 45)
             .difference(DateTime(DateTime.now().year, DateTime.now().month,
                 DateTime.now().day, currentHour, currentMinute)))
         .inMinutes
@@ -281,7 +302,7 @@ String timeRemains(int currentHour, int currentMinute) {
   }
   // No Period
   else {
-    return "0";
+    return "No";
   }
 }
 
@@ -289,22 +310,22 @@ String sectionFind(int currentHour, int currentMinute) {
   //First Period
   if (((currentHour > 9) || (currentHour == 9 && currentMinute > 10)) &&
       ((currentHour < 9) || (currentHour == 9 && currentMinute <= 45))) {
-    return "7 \" D \"";
+    return "Period : 1(7 \" D \")";
   }
   //Break
   else if (((currentHour > 9) || (currentHour == 9 && currentMinute > 45)) &&
       ((currentHour < 9) || (currentHour == 9 && currentMinute <= 55))) {
-    return "Break";
+    return "Short Break";
   }
   //Second Period
   else if (((currentHour > 9) || (currentHour == 9 && currentMinute > 55)) &&
       ((currentHour < 10) || (currentHour == 10 && currentMinute <= 35))) {
-    return "7 \" D \"";
+    return "Period : 2(7 \" D \")";
   }
   // Third Period
   else if (((currentHour > 10) || (currentHour == 10 && currentMinute > 35)) &&
       ((currentHour < 11) || (currentHour == 11 && currentMinute <= 15))) {
-    return "7 \" B \"";
+    return "Period : 3(7 \" B \")";
   }
   // Lunch
   else if (((currentHour > 11) || (currentHour == 11 && currentMinute > 15)) &&
@@ -314,32 +335,32 @@ String sectionFind(int currentHour, int currentMinute) {
   // Assembly
   else if (((currentHour > 11) || (currentHour == 11 && currentMinute > 40)) &&
       ((currentHour < 11) || (currentHour == 11 && currentMinute <= 45))) {
-    return "Lunch Break";
+    return "Assembly";
   }
   // Fourth Period
   else if (((currentHour > 11) || (currentHour == 11 && currentMinute > 45)) &&
       ((currentHour < 12) || (currentHour == 12 && currentMinute <= 20))) {
-    return "7 \" B \"";
+    return "Period : 4(7 \" B \")";
   }
   // Fifth Period
   else if (((currentHour > 12) || (currentHour == 12 && currentMinute > 20)) &&
       ((currentHour < 12) || (currentHour == 12 && currentMinute <= 55))) {
-    return "7 \" C \"";
+    return "Period : 5(7 \" C \")";
   }
   //Break
   else if (((currentHour > 12) || (currentHour == 12 && currentMinute > 55)) &&
       ((currentHour < 13) || (currentHour == 13 && currentMinute <= 5))) {
-    return "Break";
+    return "Short Break";
   }
   // Sixth Period
   else if (((currentHour > 13) || (currentHour == 13 && currentMinute > 5)) &&
       ((currentHour < 13) || (currentHour == 13 && currentMinute <= 40))) {
-    return "7 \" C \"";
+    return "Period : 6(7 \" C \")";
   }
   // Seventh Period
   else if (((currentHour > 13) || (currentHour == 13 && currentMinute > 40)) &&
       ((currentHour < 14) || (currentHour == 14 && currentMinute <= 15))) {
-    return "7 \" A \"";
+    return "Period : 7(7 \" A \")";
   }
   // Snack
   else if (((currentHour > 14) || (currentHour == 14 && currentMinute > 15)) &&
@@ -349,7 +370,7 @@ String sectionFind(int currentHour, int currentMinute) {
   // Eigth Period
   else if (((currentHour > 14) || (currentHour == 14 && currentMinute > 30)) &&
       ((currentHour < 15) || (currentHour == 15 && currentMinute <= 10))) {
-    return "7 \" A \"";
+    return "Period : 8(7 \" A \")";
   }
   // No Period
   else {
