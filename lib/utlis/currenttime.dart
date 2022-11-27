@@ -13,7 +13,7 @@ class _CurrentTimeState extends State<CurrentTime> {
   String time = DateFormat.E().format(DateTime.now()).toString();
   @override
   Widget build(BuildContext context) {
-    return time == 'Tue' ? const Period() : const NoClass();
+    return time == 'Mon' ? const Period() : const NoClass();
   }
 }
 
