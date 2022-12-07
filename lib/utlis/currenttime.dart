@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:timetable/utlis/noclass.dart';
-
 import 'package:timetable/utlis/periodcheck.dart';
 
 class CurrentTime extends StatefulWidget {
