@@ -18,108 +18,119 @@ class _PeriodState extends State<Period> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(
-              height: 1,
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(
+            "Class Notification",
+            style: GoogleFonts.poppins(
+              fontWeight: FontWeight.bold,
+              fontSize: 25,
+              // color: Colors.white,
             ),
-            Text(
-              time,
-              style: GoogleFonts.oswald(
-                fontWeight: FontWeight.bold,
-                fontSize: 70,
-                color: Colors.black,
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Container(
-                width: 600,
-                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                decoration: BoxDecoration(
-                  color: Colors.deepOrange[300],
-                  borderRadius: BorderRadius.circular(20),
+          ),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  height: 1,
                 ),
-                child: timeRemain == 'No'
-                    ? Center(
-                        child: Text(
-                          "\n\nClass Over\n\n",
-                          style: GoogleFonts.ubuntu(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 60,
-                            color: Colors.white,
-                          ),
+                Text(
+                  time,
+                  style: GoogleFonts.oswald(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 70,
+                    color: Colors.black,
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                Container(
+                    width: 600,
+                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                    decoration: BoxDecoration(
+                      color: Colors.deepOrange[300],
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: timeRemain == 'No'
+                        ? Center(
+                            child: Text(
+                              "\n\nClass Over\n\n",
+                              style: GoogleFonts.ubuntu(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 60,
+                                color: Colors.white,
+                              ),
+                            ),
+                          )
+                        : Column(
+                            children: [
+                              Text(
+                                "Time Remaining",
+                                style: GoogleFonts.ubuntu(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 40,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Text(
+                                timeRemain,
+                                style: GoogleFonts.ubuntu(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 300,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          )),
+                const SizedBox(
+                  height: 40,
+                ),
+                Text(
+                  currentSection,
+                  style: GoogleFonts.oswald(
+                    fontSize: 48,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    wordSpacing: 5,
+                  ),
+                ),
+                const SizedBox(
+                  height: 50,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      time = DateFormat.jm().format(DateTime.now()).toString();
+                      currentHour = (DateTime.now().hour);
+                      currentMinute = DateTime.now().minute;
+                      timeRemain = timeRemains(currentHour, currentMinute);
+                      currentSection = sectionFind(currentHour, currentMinute);
+                    });
+                  },
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: Center(
+                      child: Text(
+                        "Designed by Shakriya Panday",
+                        style: GoogleFonts.oswald(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                          color: Colors.black,
                         ),
-                      )
-                    : Column(
-                        children: [
-                          Text(
-                            "Time Remaining",
-                            style: GoogleFonts.ubuntu(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 40,
-                              color: Colors.white,
-                            ),
-                          ),
-                          Text(
-                            timeRemain,
-                            style: GoogleFonts.ubuntu(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 300,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      )),
-            const SizedBox(
-              height: 40,
-            ),
-            Text(
-              currentSection,
-              style: GoogleFonts.oswald(
-                fontSize: 48,
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                wordSpacing: 5,
-              ),
-            ),
-            const SizedBox(
-              height: 50,
-            ),
-            GestureDetector(
-              onTap: () {
-                setState(() {
-                  time = DateFormat.jm().format(DateTime.now()).toString();
-                  currentHour = (DateTime.now().hour);
-                  currentMinute = DateTime.now().minute;
-                  timeRemain = timeRemains(currentHour, currentMinute);
-                  currentSection = sectionFind(currentHour, currentMinute);
-                });
-              },
-              child: SizedBox(
-                width: double.infinity,
-                child: Center(
-                  child: Text(
-                    "Designed by Shakriya Panday",
-                    style: GoogleFonts.oswald(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
-                      color: Colors.black,
+                      ),
                     ),
                   ),
                 ),
-              ),
+              ],
             ),
-          ],
-        ),
-      ),
-    );
+          ),
+        ));
   }
 }
 
