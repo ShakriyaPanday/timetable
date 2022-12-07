@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:timetable/utlis/noclass.dart';
-import 'package:timetable/utlis/normalperiod.dart';
+
 import 'package:timetable/utlis/periodcheck.dart';
 
 class CurrentTime extends StatefulWidget {
@@ -15,6 +15,6 @@ class _CurrentTimeState extends State<CurrentTime> {
   String time = DateFormat.E().format(DateTime.now()).toString();
   @override
   Widget build(BuildContext context) {
-    return time == 'Wed' ? const PeriodCheck() : const NoClass();
+    return time == 'Mon' ? const PeriodCheck() : const NoClass();
   }
 }
