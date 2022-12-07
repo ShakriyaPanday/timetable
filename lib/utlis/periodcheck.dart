@@ -21,9 +21,17 @@ class _PeriodCheckState extends State<PeriodCheck> {
               Navigator.push(context,
                   MaterialPageRoute(builder: ((context) => const Period())));
             }),
-            child: Container(
-              child: Text("Normal"),
-            ),
+            child: const Text("Normal"),
+          ),
+          SizedBox(
+            height: 100,
+          ),
+          GestureDetector(
+            onTap: (() {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: ((context) => const ZeroHour())));
+            }),
+            child: const Text("Zero"),
           )
         ],
       ),
