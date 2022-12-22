@@ -220,7 +220,7 @@ String timeRemains(int currentHour, int currentMinute) {
   else if (((currentHour > 12) || (currentHour == 12 && currentMinute > 45)) &&
       ((currentHour < 13) || (currentHour == 13 && currentMinute <= 15))) {
     return (DateTime(DateTime.now().year, DateTime.now().month,
-                DateTime.now().day, 13, 55)
+                DateTime.now().day, 13, 15)
             .difference(DateTime(DateTime.now().year, DateTime.now().month,
                 DateTime.now().day, currentHour, currentMinute)))
         .inMinutes
