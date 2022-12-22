@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:timetable/utlis/periodcheck.dart';
 
 class NoClass extends StatelessWidget {
   const NoClass({super.key});
@@ -11,17 +12,24 @@ class NoClass extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 50),
-              decoration: BoxDecoration(
-                  color: Colors.deepOrange[300],
-                  borderRadius: BorderRadius.circular(20)),
-              child: Text(
-                "No Class",
-                style: GoogleFonts.oswald(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 50,
-                  color: Colors.white,
+            child: GestureDetector(
+              onLongPress: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: ((context) => PeriodCheck())));
+              },
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 30, horizontal: 50),
+                decoration: BoxDecoration(
+                    color: Colors.deepOrange[300],
+                    borderRadius: BorderRadius.circular(20)),
+                child: Text(
+                  "No Class",
+                  style: GoogleFonts.oswald(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 50,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
